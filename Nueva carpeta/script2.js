@@ -1,24 +1,12 @@
 //EJERCICIO 1  "Creacion de restful API"
 
-
+const methodOverride = require("method-override");
 const cors = require("cors");
-const multer = require("multer");
-const  methodOverride = require("method-override");
-const  {v4: uuid}  = require('uuid');
 const express = require("express");
+const multer = require("multer");
+const {v4: uuidv4}  = require("uuid");
 const path = require("path");
 const dayjs = require("dayjs");
-
-/*
-import cors from "cors";
-import multer from "multer";
-import MethodOverride from "method-override";
-import {
-    v4 as uuid
-} from "uuid";
-import express from "express";
-import path from "path";
-import dayjs from "dayjs";   */
 
 const server = express();
 const log = console.log;
@@ -39,7 +27,7 @@ let users = [{
 
 ];   
 
-server.listen(3000, () => {
+server.listen(port, () => {
     log("start server");
 }).on("error", () => {
     log("error server");
