@@ -1,3 +1,5 @@
+//EJERCICIO 1  "Creacion de restful API"
+
 /*
 const cors = require("cors");
 const multer = require("multer");
@@ -79,7 +81,7 @@ server.get("/mostrar/user/", (req,res)=>{
 server.post("/users/create", (req,res)=>{
     const {name, email, pass} = req.body;
     users.push({name, email, pass});
-    res.send("Usuario agregado");
+    res.send("Usuario agregado, verifique sus datos con GET/users");
 });
 
 //6- Eliminar user por email                               
@@ -104,3 +106,35 @@ server.put("/users/actualizar", (req, res)=>{
     users.push({name,email,pass});
     res.send("Usuario Actualizado");
 });
+
+
+//EJERCICIO 2 "Endpoint Adicional"
+
+const multerConfig = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null,"./img");
+    },
+    filename: function (req, file, cb){
+        let idImage = uuid().split("-")[0];
+
+        let day = dayjs().format("DD-MM-YYYY");
+
+        cb(null,`${day}.${idImage}.${file.originalname}`);
+    }
+});
+
+const multerMiddle = multer({storage: multerConfig});
+
+server.get("/registro/usuario", (req,res)=>{
+    res.sendFile(path.join(__dirname, "/DataUser.html"));
+});
+
+server.post("/subir/imagen", multerMiddle.single("imagefile"), (req,res)=>{
+        
+    if(req.file){
+        res.send("Imagen Guardada");
+    } else{
+        res.send("Error al cargar la imagen");
+    }
+});
+
