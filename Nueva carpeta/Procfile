@@ -1,0 +1,1 @@
+web: node script2.js
