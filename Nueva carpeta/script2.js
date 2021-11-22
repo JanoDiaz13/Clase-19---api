@@ -1,14 +1,14 @@
 //EJERCICIO 1  "Creacion de restful API"
 
-/*
+
 const cors = require("cors");
 const multer = require("multer");
 const  MethodOverride = require("method-override");
 const { v4: uuidv4 } = require('uuid');
 const express = require("express");
 const dayjs = require("dayjs");
-*/
 
+/*
 import cors from "cors";
 import multer from "multer";
 import MethodOverride from "method-override";
@@ -18,7 +18,7 @@ import {
 import express from "express";
 import path from "path";
 import dayjs from "dayjs";  
-import { setServers } from "dns";
+import { setServers } from "dns"; */
 
 const server = express();
 const log = console.log;
@@ -27,7 +27,7 @@ let port = process.env.PORT || 3000;
 
 server.use(express.urlencoded({extended:true}));
 server.use(express.json());
-server.use(cors());
+//server.use(cors());
 server.use(MethodOverride());
 
 let users = [{
