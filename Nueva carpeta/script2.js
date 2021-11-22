@@ -4,7 +4,7 @@
 const cors = require("cors");
 const multer = require("multer");
 const  methodOverride = require("method-override");
-const { v4: uuidv4 } = require('uuid');
+const  {v4: uuid}  = require('uuid');
 const express = require("express");
 const path = require("path");
 const dayjs = require("dayjs");
@@ -25,10 +25,11 @@ const log = console.log;
 
 let port = process.env.PORT || 3000;
 
-server.use(express.urlencoded({extended:true}));
+server.use(cors());
 server.use(express.json());
-//server.use(cors());
-server.use(MethodOverride());
+server.use(express.urlencoded({extended:true}));
+server.use(methodOverride());
+
 
 let users = [{
         email: "asd@gmail.com",
